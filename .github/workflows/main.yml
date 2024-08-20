@@ -14,7 +14,12 @@ on:
 jobs:
   example_job:
     name: Generate output
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    # environment:
+    #   name: ${{ needs.set-tag.outputs.environment }}
+    # concurrency:
+    #   group: switch-traffic-${{ needs.set-tag.outputs.environment }}
+    #   cancel-in-progress: true
     # Map the job outputs to step outputs
     outputs:
       output1: ${{ steps.step1.outputs.firstword }}
@@ -24,3 +29,9 @@ jobs:
         run: echo "firstword=hello" >> $GITHUB_OUTPUT
       - id: step2
         run: echo "secondword=world" >> $GITHUB_OUTPUT
+      - name: debug
+        run: |
+          echo 'github.event_name: ' ${{ github.event_name }}
+          echo 'github.ref_name: ' ${{ github.ref_name }}
+          echo 'github.base_ref: ' ${{ github.base_ref }}
+          cat $GITHUB_EVENT_PATH
