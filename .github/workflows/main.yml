@@ -14,7 +14,7 @@ on:
 jobs:
   example_job:
     name: Generate output
-    # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     # environment:
     #   name: ${{ needs.set-tag.outputs.environment }}
     # concurrency:
