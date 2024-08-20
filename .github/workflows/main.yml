@@ -15,8 +15,8 @@ jobs:
   example_job:
     name: Generate output
     runs-on: ubuntu-latest
-    # environment:
-    #   name: ${{ needs.set-tag.outputs.environment }}
+    environment:
+      name: ${{ github.ref_name }}
     # concurrency:
     #   group: switch-traffic-${{ needs.set-tag.outputs.environment }}
     #   cancel-in-progress: true
