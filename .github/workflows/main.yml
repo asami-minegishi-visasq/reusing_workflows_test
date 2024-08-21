@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name }}
-    # concurrency:
-    #   group: switch-traffic-${{ needs.set-tag.outputs.environment }}
-    #   cancel-in-progress: true
+    concurrency:
+      group: concurrency-test
+      cancel-in-progress: true
     # Map the job outputs to step outputs
     outputs:
       output1: ${{ steps.step1.outputs.firstword }}
@@ -34,4 +34,6 @@ jobs:
           echo 'github.event_name: ' ${{ github.event_name }}
           echo 'github.ref_name: ' ${{ github.ref_name }}
           echo 'github.base_ref: ' ${{ github.base_ref }}
+          echo 'env.TEST1: ' ${{ env.TEST1 }}
+          echo 'env.TEST2: ' ${{ env.TEST2 }}
           cat $GITHUB_EVENT_PATH
