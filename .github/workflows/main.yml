@@ -3,6 +3,13 @@ name: Reusable workflow
 on:
   workflow_call:
     # Map the workflow outputs to job outputs
+    inputs:
+      TEST1:
+        type: string
+        required: true
+      TEST2:
+        type: string
+        required: true
     outputs:
       firstword:
         description: "The first output string"
@@ -34,6 +41,6 @@ jobs:
           echo 'github.event_name: ' ${{ github.event_name }}
           echo 'github.ref_name: ' ${{ github.ref_name }}
           echo 'github.base_ref: ' ${{ github.base_ref }}
-          echo 'env.TEST1: ' ${{ env.TEST1 }}
-          echo 'env.TEST2: ' ${{ env.TEST2 }}
+          echo 'inputs.TEST1: ' ${{ inputs.TEST1 }}
+          echo 'inputs.TEST2: ' ${{ inputs.TEST2 }}
           cat $GITHUB_EVENT_PATH
