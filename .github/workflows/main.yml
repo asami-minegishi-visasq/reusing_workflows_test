@@ -38,6 +38,7 @@ jobs:
         run: echo "secondword=world" >> $GITHUB_OUTPUT
       - name: debug
         run: |
+          echo 'vars.PROTECTED_REVISION_TAGS: ' ${{ vars.PROTECTED_REVISION_TAGS }}
           echo 'github.event_name: ' ${{ github.event_name }}
           echo 'github.ref_name: ' ${{ github.ref_name }}
           echo 'github.base_ref: ' ${{ github.base_ref }}
